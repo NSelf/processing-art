@@ -1,10 +1,10 @@
 /*--------------------*/
 /*--------------------*/
 
-//TODO: sort stars[] by p.z using a comparitor
+//TODO: Proper commenting, spacebar to pause.
 
 Star[] stars = new Star[100];
-float cameraSpeed = 10;
+float cameraSpeed = 20;
 float depth = 1000;
 boolean showFrameRate = true;
 boolean paused = false;
@@ -27,6 +27,9 @@ void draw() {
     background(color(340, 60, 20));
     translate(width / 2, height / 2);
 
+    //Stars are sorted by z (depth) for occlusion by render order.
+    java.util.Arrays.sort(stars);
+
     for (int i = 0; i < stars.length; i++) {
         stars[i].update();
         stars[i].show();
@@ -40,7 +43,7 @@ void draw() {
 
 /*--------------------*/
 
-public class Star {
+public class Star implements Comparable<Star>{
     protected PVector p;
     protected float r;
 
@@ -79,6 +82,10 @@ public class Star {
         fill(color(340, 60, brightness));
         noStroke();
         ellipse(sx, sy, sr * 2, sr * 2);
+    }
+
+    public int compareTo(Star s) {
+        return round(s.p.z - this.p.z);
     }
 }
 
