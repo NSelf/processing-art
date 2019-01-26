@@ -4,7 +4,7 @@
 //TODO: Proper commenting, spacebar to pause.
 
 Star[] stars = new Star[100];
-float cameraSpeed = 20;
+float cameraSpeed = 5;
 float depth = 1000;
 boolean showFrameRate = true;
 boolean paused = false;
@@ -49,7 +49,7 @@ public class Star implements Comparable<Star>{
 
     public Star(float x, float y, float z) {
         p =  new PVector(x, y, z);
-        r = 5;
+        r = 10;
     }
 
     public void update() {

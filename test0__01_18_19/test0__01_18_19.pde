@@ -22,7 +22,7 @@ void keyPressed() {
             key != ESC &&
             key != DELETE)
     userMessage.append(key);
-  println(Character.getType(key).toString());
+  // println(Character.getType(key).toString());
 }
 
 void draw() {
